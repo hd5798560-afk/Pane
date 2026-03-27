@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝑻𝒓𝒖𝒏𝒈 𝑯𝒊𝒆𝒖👑 DEATH PANEL</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0a000f, #1a001f);
+    color: #ff99ff;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://i.imgur.com/2fY8z3K.jpg') center/cover no-repeat;
+    opacity: 0.15;
+    z-index: -2;
+    filter: brightness(0.6) contrast(1.3);
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,0,100,0.03) 2px, rgba(255,0,100,0.03) 4px);
+    pointer-events: none;
+    z-index: -1;
+    animation: glitch-bg 8s linear infinite;
+}
+
+@keyframes glitch-bg {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 130px;
+    background: rgba(15, 5, 25, 0.95);
+    border-right: 2px solid #ff00aa;
+    box-shadow: 0 0 30px #ff00aa;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 8px;
+}
+
+.sidebar button {
+    background: none;
+    border: 2px solid #660033;
+    color: #ff99ff;
+    padding: 14px 10px;
+    margin: 8px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar button:hover {
+    border-color: #ff00aa;
+    color: white;
+    box-shadow: 0 0 15px #ff00aa;
+    transform: scale(1.05);
+}
+
+.sidebar button.active {
+    background: linear-gradient(90deg, #ff00aa, #aa00ff);
+    color: white;
+    border-color: #ff00ff;
+    box-shadow: 0 0 25px #ff00ff;
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(10, 0, 15, 0.7);
+}
+
+.title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff33cc;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #aa00ff;
+    letter-spacing: 3px;
+    animation: title-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+    from { text-shadow: 0 0 10px #ff00ff; }
+    to { text-shadow: 0 0 30px #ff00ff, 0 0 50px #aa00ff; }
+}
+
+.card {
+    background: rgba(25, 10, 40, 0.9);
+    border: 2px solid #9900cc;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 0 15px rgba(255, 0, 170, 0.4);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    border-color: #ff00ff;
+    box-shadow: 0 0 25px #ff00ff;
+    transform: translateY(-3px);
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffccff;
+}
+
+/* Toggle */
+.switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+}
+
+.switch input { display: none; }
+
+.sliderToggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #330022;
+    border: 2px solid #ff00aa;
+    border-radius: 50px;
+    transition: 0.4s;
+}
+
+.sliderToggle:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    top: 2px;
+    background: #ff99ff;
+    border-radius: 50%;
+    transition: 0.4s;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+input:checked + .sliderToggle {
+    background: linear-gradient(90deg, #ff0066, #aa00ff);
+    border-color: #ff00ff;
+}
+
+input:checked + .sliderToggle:before {
+    transform: translateX(24px);
+    background: white;
+}
+
+/* Range */
+.range {
+    width: 100%;
+    accent-color: #ff00ff;
+}
+
+/* Phần Thông tin - Làm rõ ràng hơn */
+.info-text {
+    line-height: 1.7;
+    font-size: 15px;
+    color: #ffccff;
+}
+
+.info-text strong {
+    color: #ff66cc;
+}
+
+.info-text ul {
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+.info-text li {
+    margin-bottom: 8px;
+    color: #ff99ee;
+}
+</style>
+</head>
+
+<body>
+
+<div style="display: flex; height: 100vh;">
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <button onclick="show(1)" class="active">AIM</button>
+    <button onclick="show(2)">FIX</button>
+    <button onclick="show(3)">KÉO</button>
+    <button onclick="show(4)">TÂM</button>
+    <button onclick="show(5)">SET</button>
+    <button onclick="show(6)">NOTE</button>
+    <button onclick="show(7)">INFO</button>
+    <button onclick="show(8)">SHOP</button>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- TAB 1: AIM -->
+    <div id="tab1">
+        <div class="title">AIM 👑 DEATH</div>
+        <div class="card"><span class="label">Aimlock</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Aimbot</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Aim Cheats</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Aim Neck</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Head Locked</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Aim Infinity</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+    </div>
+
+    <!-- TAB 2: FIX -->
+    <div id="tab2" style="display:none">
+        <div class="title">FIX 👑 DEATH</div>
+        <div class="card"><span class="label">Nhẹ tâm</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Fix Lố</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Fix Rung</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Giảm Delay</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Giảm Drop</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Tăng Tốc Wifi</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Nhạy Màn</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+    </div>
+
+    <!-- TAB 3: KÉO -->
+    <div id="tab3" style="display:none">
+        <div class="title">KÉO 👑 DEATH</div>
+        <div class="card"><span class="label">Vuốt tâm dính đầu</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Kéo nhẹ đầu</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Kéo ngang dễ vô đầu</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Kéo tâm siêu dính đầu</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Đẩy nhẹ nút bắn</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+    </div>
+
+    <!-- TAB 4: TÂM -->
+    <div id="tab4" style="display:none">
+        <div class="title">TÂM ỔN ĐỊNH 👑 DEATH</div>
+        <div class="card"><span class="label">Đầm tâm</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Tâm ổn định</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Êm tâm</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+        <div class="card"><span class="label">Ghìm tâm</span> <label class="switch"><input type="checkbox"><span class="sliderToggle"></span></label></div>
+    </div>
+
+    <!-- TAB 5: SETTING -->
+    <div id="tab5" style="display:none">
+        <div class="title">SETTING 👑 DEATH</div>
+        <div class="card">Thanh 1 <input type="range" min="0" max="500" class="range"></div>
+        <div class="card">Thanh 2 <input type="range" min="0" max="500" class="range"></div>
+        <div class="card">Thanh 3 <input type="range" min="0" max="500" class="range"></div>
+        <div class="card">Thanh 4 <input type="range" min="0" max="500" class="range"></div>
+        <div class="card">Thanh 5 <input type="range" min="0" max="500" class="range"></div>
+    </div>
+
+    <!-- TAB 6: NOTE (đã chỉnh rõ ràng) -->
+    <div id="tab6" style="display:none">
+        <div class="title">NOTE 👑 DEATH</div>
+        <div class="card">
+            <div class="info-text">
+                <strong>Hướng dẫn cài đặt nút bắn:</strong><br><br>
+                • Nút bắn khuyến nghị đặt ở mức <strong>36 - 38 - 40</strong><br>
+                • Giá trị càng cao thì lực kéo càng mạnh<br>
+                • Giá trị càng thấp thì kéo sẽ nhẹ và dễ kiểm soát hơn
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 7: INFO (đã chỉnh rõ ràng) -->
+    <div id="tab7" style="display:none">
+        <div class="title">INFO 👑 DEATH</div>
+        <div class="card">
+            <div class="info-text">
+                <strong>Thông tin về Config:</strong><br><br>
+                Đây là config hỗ trợ kéo tâm (drag aim assist).<br><br>
+                <strong>Lưu ý quan trọng:</strong>
+                <ul>
+                    <li>Không phải hack ghim cứng đầu như aimbot thật</li>
+                    <li>Cần có kỹ năng kéo tay cơ bản</li>
+                    <li>Kết hợp tốt với cảm giác và kinh nghiệm chơi</li>
+                    <li>Hiệu quả cao nhất khi dùng chung với setting nhạy hợp lý</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 8: SHOP (đã chỉnh rõ ràng) -->
+    <div id="tab8" style="display:none">
+        <div class="title">SHOP 👑 DEATH</div>
+        <div class="card">
+            <div class="info-text" style="text-align: center;">
+                <strong>SHOP 𝑻𝒓𝒖𝒏𝒈 𝑯𝒊𝒆𝒖👑</strong><br><br>
+                CONFIG SIÊU BÁ 🔥<br><br>
+                Cảm ơn bạn đã sử dụng config của mình ❤️<br><br>
+                <strong>Liên hệ:</strong><br>
+                Zalo: <span style="color:#ff00ff;">0376835602</span><br>
+                Facebook: Tr Hieu (Ryvexis)
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script>
+function show(n){
+  document.querySelectorAll('[id^="tab"]').forEach(t => t.style.display = "none");
+  document.getElementById("tab" + n).style.display = "block";
+
+  document.querySelectorAll('.sidebar button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sidebar button')[n-1].classList.add('active');
+}
+</script>
+
+</body>
+</html>
